@@ -77,7 +77,7 @@ class CatalogBusiness extends AbstractBusiness {
             case 'relatedEntities':
               let entityType: string;
               dataClassDBOArray.some((_dataClass) => {
-                if(_dataClass.collectionName === attr.type) {
+                if (_dataClass.collectionName === attr.type) {
                   entityType = _dataClass.name;
                   return true;
                 }

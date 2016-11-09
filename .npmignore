@@ -17,3 +17,5 @@ dts.js
 gulpfile.js
 karma.conf.js
 wakanda-solution/
+
+typings/

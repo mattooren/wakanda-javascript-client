@@ -29,7 +29,7 @@ class WakandaClient {
   public directory: IDirectory;
   public helper: IHelper;
   public catalog: string;
- 
+
   constructor(params: {host?: string, catalog?: string}|any) {
     let host = typeof(params) === 'object' ? params.host : undefined;
     let catalog = typeof(params) === 'object' ? params.catalog : undefined;

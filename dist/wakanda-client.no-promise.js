@@ -1967,7 +1967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var strCatalog = catalog ? '/' + catalog : '';
 	        return httpClient.get({ uri: '/rest/$catalog' + strCatalog + strDataclasses })
 	            .then(function (res) {
-	            var catalog = [];
+	            var catalogContent = [];
 	            var rawObj = JSON.parse(res.body);
 	            if (rawObj.dataClasses) {
 	                for (var _i = 0, _a = rawObj.dataClasses; _i < _a.length; _i++) {
@@ -1995,7 +1995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            });
 	                        }
 	                    }
-	                    catalog.push({
+	                    catalogContent.push({
 	                        name: d.name,
 	                        collectionName: d.collectionName,
 	                        attributes: attributes,
@@ -2004,7 +2004,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    });
 	                }
 	            }
-	            return catalog;
+	            return catalogContent;
 	        });
 	    };
 	    return CatalogBaseService;
@@ -2921,7 +2921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // return null or throw an error, simple date format is ko
 	            return null;
 	        }
-	        var date = new Date(Date.UTC(parseInt(arr[2]), parseInt(arr[1]) - 1, parseInt(arr[0])));
+	        var date = new Date(Date.UTC(parseInt(arr[2], 10), parseInt(arr[1], 10) - 1, parseInt(arr[0], 10)));
 	        return date;
 	    };
 	    Util.wakToStringSimpleDate = function (date) {
@@ -3752,12 +3752,12 @@ return /******/ (function(modules) { // webpackBootstrap
 			"ts-loader": "0.8.1",
 			"tslint": "^3.9.0",
 			"tslint-loader": "^2.1.4",
-			"typescript": "^1.8.10",
+			"typescript": "^2.0.6",
 			"webpack": "^1.12.15"
 		},
 		"dependencies": {
-			"core-js": "^2.1.2",
-			"request": "^2.67.0"
+			"core-js": "^2.4.1",
+			"request": "^2.76.0"
 		}
 	};
 

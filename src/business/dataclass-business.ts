@@ -156,7 +156,7 @@ class DataClassBusiness extends AbstractBusiness {
     });
     business._decorateEntity();
 
-    if(! deferred) {
+    if (!deferred) {
       this._populateEntityDataFromDbo({
         dbo: dbo,
         entity: entity
@@ -243,7 +243,7 @@ class DataClassBusiness extends AbstractBusiness {
             });
           }
           else if (attr.type === 'date') {
-            if(! dboAttribute) {
+            if (!dboAttribute) {
               entity[attr.name] = null;
             } else {
               entity[attr.name] = attr.simpleDate ? Util.wakParseSimpleDate(dboAttribute) : new Date(dboAttribute);
@@ -269,7 +269,7 @@ class DataClassBusiness extends AbstractBusiness {
           }
         }
       }
-    return entity;
+      return entity;
   }
 
   public _presentationEntityFromDbo({dbo}: {dbo: IEntityDBO}): Entity {
