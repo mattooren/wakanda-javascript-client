@@ -57,14 +57,14 @@ class EntityBusiness extends AbstractBusiness {
     for (let attr of this.dataClass.attributes) {
       let objAttr = entity[attr.name];
 
-      if(attr instanceof AttributeCollection) {
+      if (attr instanceof AttributeCollection) {
         continue;
       }
 
       if (attr instanceof AttributeRelated) {
         data[attr.name] = objAttr ? objAttr._key : null;
       } else {
-        switch(attr.type) {
+        switch (attr.type) {
           case 'image':
           case 'blob':
             data[attr.name] = { uri: objAttr.uri };
@@ -73,7 +73,7 @@ class EntityBusiness extends AbstractBusiness {
             data[attr.name] = JSON.stringify(objAttr);
             break;
           case 'date':
-            if(! objAttr) {
+            if (!objAttr) {
               data[attr.name] = null;
             } else {
               data[attr.name] = attr.simpleDate ? Util.wakToStringSimpleDate(objAttr) : objAttr.toJSON();
@@ -213,11 +213,11 @@ class EntityBusiness extends AbstractBusiness {
     if (!entityIsNew) {
       let oldData = this._oldEntityValues || {};
       for (let attr of this.dataClass.attributes) {
-        if(data[attr.name] === undefined || attr.name === 'ID') {
+        if (data[attr.name] === undefined || attr.name === 'ID') {
           continue;
         }
 
-        switch(attr.type) {
+        switch (attr.type) {
           case 'image':
           case 'blob':
             if (data[attr.name].uri === oldData[attr.name].uri) {
@@ -232,7 +232,7 @@ class EntityBusiness extends AbstractBusiness {
           default:
             if (data[attr.name] === oldData[attr.name]) {
               delete data[attr.name];
-            } 
+            }
         }
       }
     }

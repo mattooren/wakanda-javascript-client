@@ -10,7 +10,7 @@
         "outDir": "ts-build"
     },
     "files": [
-      "typings/main.d.ts",
+      "typings/index.d.ts",
       "src/entry.browser.ts"
     ]
 }

@@ -20,7 +20,7 @@ export class CatalogBaseService {
 
     return httpClient.get({uri: '/rest/$catalog' + strCatalog + strDataclasses})
       .then(res => {
-        let catalog: IDataClassDBO[] = [];
+        let catalogContent: IDataClassDBO[] = [];
         let rawObj = JSON.parse(res.body);
 
         if (rawObj.dataClasses) {
@@ -49,7 +49,7 @@ export class CatalogBaseService {
               }
             }
 
-            catalog.push({
+            catalogContent.push({
               name: d.name,
               collectionName: d.collectionName,
               attributes,
@@ -59,7 +59,7 @@ export class CatalogBaseService {
           }
         }
 
-        return catalog;
+        return catalogContent;
       });
   }
 }
