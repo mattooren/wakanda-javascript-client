@@ -62,6 +62,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	__webpack_require__(2);
 	__webpack_require__(24);
 	__webpack_require__(58);
@@ -1687,6 +1688,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var catalog_business_1 = __webpack_require__(84);
 	var directory_business_1 = __webpack_require__(110);
 	var entity_1 = __webpack_require__(96);
@@ -1710,11 +1712,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            logout: function () {
 	                return directoryBusiness.logout();
 	            },
-	            currentUser: function () {
-	                return directoryBusiness.currentUser();
+	            getCurrentUser: function () {
+	                return directoryBusiness.getCurrentUser();
 	            },
-	            currentUserBelongsTo: function (group) {
-	                return directoryBusiness.currentUserBelongsTo(group);
+	            getCurrentUserBelongsTo: function (group) {
+	                return directoryBusiness.getCurrentUserBelongsTo(group);
 	            }
 	        };
 	        this.helper = {
@@ -1737,7 +1739,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return WakandaClient;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = WakandaClient;
 
 
@@ -1746,11 +1747,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_business_1 = __webpack_require__(85);
 	var catalog_service_1 = __webpack_require__(86);
 	var catalog_1 = __webpack_require__(89);
@@ -1759,10 +1766,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var CatalogBusiness = (function (_super) {
 	    __extends(CatalogBusiness, _super);
 	    function CatalogBusiness(obj) {
-	        _super.call(this, obj);
-	        this.service = new catalog_service_1.default({
-	            wakJSC: this.wakJSC
+	        var _this = _super.call(this, obj) || this;
+	        _this.service = new catalog_service_1.default({
+	            wakJSC: _this.wakJSC
 	        });
+	        return _this;
 	    }
 	    CatalogBusiness.prototype.needDataClass = function (dcName) {
 	        if (this.seenDataClasses.indexOf(dcName) === -1) {
@@ -1777,7 +1785,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            for (var _i = 0, dataClassDBOArray_1 = dataClassDBOArray; _i < dataClassDBOArray_1.length; _i++) {
 	                var dcDBO = dataClassDBOArray_1[_i];
 	                var attributes = [];
-	                var _loop_1 = function(attr) {
+	                var _loop_1 = function (attr) {
 	                    switch (attr.kind) {
 	                        case 'relatedEntity':
 	                            attributes.push(new dataclass_1.AttributeRelated({
@@ -1877,7 +1885,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return CatalogBusiness;
 	}(abstract_business_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = CatalogBusiness;
 
 
@@ -1886,6 +1893,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var AbstractBusiness = (function () {
 	    function AbstractBusiness(_a) {
 	        var wakJSC = _a.wakJSC;
@@ -1893,7 +1901,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return AbstractBusiness;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = AbstractBusiness;
 
 
@@ -1902,17 +1909,23 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_service_1 = __webpack_require__(87);
 	var catalog_base_service_1 = __webpack_require__(88);
 	var CatalogService = (function (_super) {
 	    __extends(CatalogService, _super);
 	    function CatalogService() {
-	        _super.apply(this, arguments);
+	        return _super !== null && _super.apply(this, arguments) || this;
 	    }
 	    CatalogService.prototype.get = function (dataClasses) {
 	        return catalog_base_service_1.CatalogBaseService.get({
@@ -1923,7 +1936,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return CatalogService;
 	}(abstract_service_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = CatalogService;
 
 
@@ -1932,6 +1944,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var AbstractService = (function () {
 	    function AbstractService(_a) {
 	        var wakJSC = _a.wakJSC;
@@ -1940,7 +1953,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return AbstractService;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = AbstractService;
 
 
@@ -1949,6 +1961,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var CatalogBaseService = (function () {
 	    function CatalogBaseService() {
 	    }
@@ -2017,6 +2030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var Catalog = (function () {
 	    function Catalog(_a) {
 	        var dataClasses = _a.dataClasses;
@@ -2027,7 +2041,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return Catalog;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = Catalog;
 
 
@@ -2036,11 +2049,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var DataClass = (function () {
 	    function DataClass(_a) {
 	        var name = _a.name, collectionName = _a.collectionName, attributes = _a.attributes, methods = _a.methods;
@@ -2067,7 +2086,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var AttributeRelated = (function (_super) {
 	    __extends(AttributeRelated, _super);
 	    function AttributeRelated() {
-	        _super.apply(this, arguments);
+	        return _super !== null && _super.apply(this, arguments) || this;
 	    }
 	    return AttributeRelated;
 	}(Attribute));
@@ -2076,8 +2095,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    __extends(AttributeCollection, _super);
 	    function AttributeCollection(_a) {
 	        var name = _a.name, type = _a.type, readOnly = _a.readOnly, kind = _a.kind, entityType = _a.entityType;
-	        _super.call(this, { name: name, type: type, readOnly: readOnly, kind: kind });
-	        this.entityType = entityType;
+	        var _this = _super.call(this, { name: name, type: type, readOnly: readOnly, kind: kind }) || this;
+	        _this.entityType = entityType;
+	        return _this;
 	    }
 	    return AttributeCollection;
 	}(Attribute));
@@ -2089,11 +2109,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_business_1 = __webpack_require__(85);
 	var entity_business_1 = __webpack_require__(92);
 	var dataclass_service_1 = __webpack_require__(100);
@@ -2112,16 +2138,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    __extends(DataClassBusiness, _super);
 	    function DataClassBusiness(_a) {
 	        var wakJSC = _a.wakJSC, dataClass = _a.dataClass, methods = _a.methods, dataURI = _a.dataURI;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.dataClass = dataClass;
-	        this.methods = methods;
-	        this.service = new dataclass_service_1.default({
-	            wakJSC: this.wakJSC,
-	            dataClassBusiness: this
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.dataClass = dataClass;
+	        _this.methods = methods;
+	        _this.service = new dataclass_service_1.default({
+	            wakJSC: _this.wakJSC,
+	            dataClassBusiness: _this
 	        });
-	        this.dataURI = dataURI;
-	        _dataClassBusinessMap.set(dataClass.name, this);
-	        this._dataClassBusinessMap = _dataClassBusinessMap;
+	        _this.dataURI = dataURI;
+	        _dataClassBusinessMap.set(dataClass.name, _this);
+	        _this._dataClassBusinessMap = _dataClassBusinessMap;
+	        return _this;
 	    }
 	    DataClassBusiness.prototype._decorateDataClass = function () {
 	        //Do not forget to bind(this) to have "this" pointing on business instance
@@ -2374,7 +2401,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return DataClassBusiness;
 	}(abstract_business_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = DataClassBusiness;
 
 
@@ -2383,11 +2409,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_business_1 = __webpack_require__(85);
 	var entity_service_1 = __webpack_require__(93);
 	var dataclass_1 = __webpack_require__(90);
@@ -2399,15 +2431,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    __extends(EntityBusiness, _super);
 	    function EntityBusiness(_a) {
 	        var wakJSC = _a.wakJSC, entity = _a.entity, dataClass = _a.dataClass, dataClassBusiness = _a.dataClassBusiness;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.entity = entity;
-	        this.dataClass = dataClass;
-	        this.dataClassBusiness = dataClassBusiness;
-	        this.service = new entity_service_1.default({
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.entity = entity;
+	        _this.dataClass = dataClass;
+	        _this.dataClassBusiness = dataClassBusiness;
+	        _this.service = new entity_service_1.default({
 	            wakJSC: wakJSC,
 	            entity: entity,
 	            dataClassBusiness: dataClassBusiness
 	        });
+	        return _this;
 	    }
 	    EntityBusiness.prototype._decorateEntity = function () {
 	        this.entity.save = this.save.bind(this);
@@ -2616,7 +2649,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return EntityBusiness;
 	}(abstract_business_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = EntityBusiness;
 
 
@@ -2625,20 +2657,27 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_service_1 = __webpack_require__(87);
 	var entity_base_service_1 = __webpack_require__(94);
 	var EntityService = (function (_super) {
 	    __extends(EntityService, _super);
 	    function EntityService(_a) {
 	        var wakJSC = _a.wakJSC, entity = _a.entity, dataClassBusiness = _a.dataClassBusiness;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.entity = entity;
-	        this.dataClassBusiness = dataClassBusiness;
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.entity = entity;
+	        _this.dataClassBusiness = dataClassBusiness;
+	        return _this;
 	    }
 	    EntityService.prototype.save = function (data, expand) {
 	        return entity_base_service_1.EntityBaseService.save({
@@ -2673,7 +2712,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return EntityService;
 	}(abstract_service_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = EntityService;
 
 
@@ -2682,6 +2720,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var util_1 = __webpack_require__(95);
 	var EntityBaseService = (function () {
 	    function EntityBaseService() {
@@ -2748,6 +2787,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var Util = (function () {
 	    function Util() {
 	    }
@@ -2824,7 +2864,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return Util;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = Util;
 
 
@@ -2833,6 +2872,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var Entity = (function () {
 	    function Entity(_a) {
 	        var entityKey = _a.key, deferred = _a.deferred, dataClass = _a.dataClass;
@@ -2847,7 +2887,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return Entity;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = Entity;
 
 
@@ -2856,6 +2895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var MethodAdapter = (function () {
 	    function MethodAdapter() {
 	    }
@@ -2891,6 +2931,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var Media = (function () {
 	    function Media(_a) {
 	        var uri = _a.uri;
@@ -2898,7 +2939,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return Media;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = Media;
 
 
@@ -2907,6 +2947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var Util = (function () {
 	    function Util() {
 	    }
@@ -2934,7 +2975,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return Util;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = Util;
 
 
@@ -2943,19 +2983,26 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_service_1 = __webpack_require__(87);
 	var dataclass_base_service_1 = __webpack_require__(101);
 	var DataClassService = (function (_super) {
 	    __extends(DataClassService, _super);
 	    function DataClassService(_a) {
 	        var wakJSC = _a.wakJSC, dataClassBusiness = _a.dataClassBusiness;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.dataClassBusiness = dataClassBusiness;
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.dataClassBusiness = dataClassBusiness;
+	        return _this;
 	    }
 	    DataClassService.prototype.find = function (id, options) {
 	        return dataclass_base_service_1.DataClassBaseService.find({
@@ -2982,7 +3029,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return DataClassService;
 	}(abstract_service_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = DataClassService;
 
 
@@ -2991,6 +3037,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var util_1 = __webpack_require__(95);
 	var DataClassBaseService = (function () {
 	    function DataClassBaseService() {
@@ -3060,11 +3107,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_business_1 = __webpack_require__(85);
 	var collection_service_1 = __webpack_require__(103);
 	var const_1 = __webpack_require__(105);
@@ -3073,18 +3126,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    __extends(CollectionBusiness, _super);
 	    function CollectionBusiness(_a) {
 	        var wakJSC = _a.wakJSC, dataClass = _a.dataClass, collection = _a.collection, dataClassBusiness = _a.dataClassBusiness, collectionUri = _a.collectionUri, pageSize = _a.pageSize, initialSelect = _a.initialSelect;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.collection = collection;
-	        this.dataClass = dataClass;
-	        this.dataClassBusiness = dataClassBusiness;
-	        this.service = new collection_service_1.default({
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.collection = collection;
+	        _this.dataClass = dataClass;
+	        _this.dataClassBusiness = dataClassBusiness;
+	        _this.service = new collection_service_1.default({
 	            wakJSC: wakJSC,
 	            collection: collection,
 	            dataClassBusiness: dataClassBusiness,
 	            collectionUri: collectionUri
 	        });
-	        this.pageSize = pageSize;
-	        this.initialSelect = initialSelect;
+	        _this.pageSize = pageSize;
+	        _this.initialSelect = initialSelect;
+	        return _this;
 	    }
 	    CollectionBusiness.prototype._decorateCollection = function () {
 	        this.collection.fetch = this.fetch.bind(this);
@@ -3198,7 +3252,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return CollectionBusiness;
 	}(abstract_business_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = CollectionBusiness;
 
 
@@ -3207,22 +3260,29 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_service_1 = __webpack_require__(87);
 	var collection_base_service_1 = __webpack_require__(104);
 	var CollectionService = (function (_super) {
 	    __extends(CollectionService, _super);
 	    function CollectionService(_a) {
 	        var wakJSC = _a.wakJSC, collection = _a.collection, dataClassBusiness = _a.dataClassBusiness, collectionUri = _a.collectionUri;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.collection = collection;
-	        this.dataClassBusiness = dataClassBusiness;
-	        this.collectionUri = collectionUri;
-	        this.isEntitySet = collection_base_service_1.isEntitySetUri(collectionUri);
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.collection = collection;
+	        _this.dataClassBusiness = dataClassBusiness;
+	        _this.collectionUri = collectionUri;
+	        _this.isEntitySet = collection_base_service_1.isEntitySetUri(collectionUri);
+	        return _this;
 	    }
 	    CollectionService.prototype.fetch = function (options) {
 	        var _this = this;
@@ -3251,7 +3311,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return CollectionService;
 	}(abstract_service_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = CollectionService;
 
 
@@ -3260,6 +3319,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var util_1 = __webpack_require__(95);
 	var CollectionBaseService = (function () {
 	    function CollectionBaseService() {
@@ -3338,29 +3398,36 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_business_1 = __webpack_require__(85);
 	var media_service_1 = __webpack_require__(107);
 	var MediaBusiness = (function (_super) {
 	    __extends(MediaBusiness, _super);
 	    function MediaBusiness(_a) {
 	        var wakJSC = _a.wakJSC, media = _a.media, dataClassBusiness = _a.dataClassBusiness, isImage = _a.isImage, attributeName = _a.attributeName, entity = _a.entity;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.media = media;
-	        this.entity = entity;
-	        this.dataClassBusiness = dataClassBusiness;
-	        this.isImage = isImage === true;
-	        this.service = new media_service_1.default({
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.media = media;
+	        _this.entity = entity;
+	        _this.dataClassBusiness = dataClassBusiness;
+	        _this.isImage = isImage === true;
+	        _this.service = new media_service_1.default({
 	            wakJSC: wakJSC,
-	            mediaBusiness: this,
+	            mediaBusiness: _this,
 	            media: media,
 	            attributeName: attributeName,
 	            dataClassBusiness: dataClassBusiness
 	        });
+	        return _this;
 	    }
 	    MediaBusiness.prototype._decorateMedia = function () {
 	        this.media.upload = this.upload.bind(this);
@@ -3390,7 +3457,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return MediaBusiness;
 	}(abstract_business_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = MediaBusiness;
 
 
@@ -3399,23 +3465,30 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_service_1 = __webpack_require__(87);
 	var media_base_service_1 = __webpack_require__(108);
 	var MediaService = (function (_super) {
 	    __extends(MediaService, _super);
 	    function MediaService(_a) {
 	        var wakJSC = _a.wakJSC, mediaBusiness = _a.mediaBusiness, media = _a.media, attributeName = _a.attributeName, dataClassBusiness = _a.dataClassBusiness;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.dataClassName = dataClassBusiness.dataClass.name;
-	        this.entity = mediaBusiness.entity;
-	        this.isImage = mediaBusiness.isImage;
-	        this.media = media;
-	        this.attributeName = attributeName;
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.dataClassName = dataClassBusiness.dataClass.name;
+	        _this.entity = mediaBusiness.entity;
+	        _this.isImage = mediaBusiness.isImage;
+	        _this.media = media;
+	        _this.attributeName = attributeName;
+	        return _this;
 	    }
 	    MediaService.prototype.upload = function (file, mimeType) {
 	        return media_base_service_1.MediaBaseService.upload({
@@ -3438,7 +3511,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return MediaService;
 	}(abstract_service_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = MediaService;
 
 
@@ -3447,6 +3519,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var MediaBaseService = (function () {
 	    function MediaBaseService() {
 	    }
@@ -3490,6 +3563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var Collection = (function () {
 	    function Collection(_a) {
 	        var deferred = _a.deferred, dataClass = _a.dataClass;
@@ -3504,7 +3578,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return Collection;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = Collection;
 
 
@@ -3513,11 +3586,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_business_1 = __webpack_require__(85);
 	var directory_service_1 = __webpack_require__(111);
 	var const_1 = __webpack_require__(105);
@@ -3525,8 +3604,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    __extends(DirectoryBusiness, _super);
 	    function DirectoryBusiness(_a) {
 	        var wakJSC = _a.wakJSC;
-	        _super.call(this, { wakJSC: wakJSC });
-	        this.service = new directory_service_1.default({ wakJSC: wakJSC });
+	        var _this = _super.call(this, { wakJSC: wakJSC }) || this;
+	        _this.service = new directory_service_1.default({ wakJSC: wakJSC });
+	        return _this;
 	    }
 	    DirectoryBusiness.prototype.login = function (username, password, duration) {
 	        var durationTime = duration || const_1.default.DEFAULT_SESSION_DURATION;
@@ -3544,20 +3624,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return Promise.reject(new Error('Directory.logout: logout failed'));
 	        });
 	    };
-	    DirectoryBusiness.prototype.currentUser = function () {
-	        return this.service.currentUser()
+	    DirectoryBusiness.prototype.getCurrentUser = function () {
+	        return this.service.getCurrentUser()
 	            .then(function (dbo) {
 	            return dbo;
 	        })
 	            .catch(function () {
-	            return Promise.reject(new Error('Directory.currentUser: user is not logged in'));
+	            return Promise.reject(new Error('Directory.getCurrentUser: user is not logged in'));
 	        });
 	    };
-	    DirectoryBusiness.prototype.currentUserBelongsTo = function (group) {
+	    DirectoryBusiness.prototype.getCurrentUserBelongsTo = function (group) {
 	        if (!(typeof group === 'string')) {
-	            throw new Error('Directory.currentUserBelongsTo: group must be a string');
+	            throw new Error('Directory.getCurrentUserBelongsTo: group must be a string');
 	        }
-	        return this.service.currentUserBelongsTo(group)
+	        return this.service.getCurrentUserBelongsTo(group)
 	            .then(function () {
 	            return true;
 	        })
@@ -3567,7 +3647,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return DirectoryBusiness;
 	}(abstract_business_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = DirectoryBusiness;
 
 
@@ -3576,17 +3655,23 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var abstract_service_1 = __webpack_require__(87);
 	var directory_base_service_1 = __webpack_require__(112);
 	var DirectoryService = (function (_super) {
 	    __extends(DirectoryService, _super);
 	    function DirectoryService() {
-	        _super.apply(this, arguments);
+	        return _super !== null && _super.apply(this, arguments) || this;
 	    }
 	    DirectoryService.prototype.login = function (username, password, duration) {
 	        return directory_base_service_1.DirectoryBaseService.login({
@@ -3601,20 +3686,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	            httpClient: this.httpClient
 	        });
 	    };
-	    DirectoryService.prototype.currentUser = function () {
-	        return directory_base_service_1.DirectoryBaseService.currentUser({
+	    DirectoryService.prototype.getCurrentUser = function () {
+	        return directory_base_service_1.DirectoryBaseService.getCurrentUser({
 	            httpClient: this.httpClient
 	        });
 	    };
-	    DirectoryService.prototype.currentUserBelongsTo = function (group) {
-	        return directory_base_service_1.DirectoryBaseService.currentUserBelongsTo({
+	    DirectoryService.prototype.getCurrentUserBelongsTo = function (group) {
+	        return directory_base_service_1.DirectoryBaseService.getCurrentUserBelongsTo({
 	            httpClient: this.httpClient,
 	            group: group
 	        });
 	    };
 	    return DirectoryService;
 	}(abstract_service_1.default));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = DirectoryService;
 
 
@@ -3623,6 +3707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var DirectoryBaseService = (function () {
 	    function DirectoryBaseService() {
 	    }
@@ -3649,7 +3734,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        });
 	    };
-	    DirectoryBaseService.currentUser = function (_a) {
+	    DirectoryBaseService.getCurrentUser = function (_a) {
 	        var httpClient = _a.httpClient;
 	        return httpClient.get({
 	            uri: '/rest/$directory/currentUser'
@@ -3664,7 +3749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        });
 	    };
-	    DirectoryBaseService.currentUserBelongsTo = function (_a) {
+	    DirectoryBaseService.getCurrentUserBelongsTo = function (_a) {
 	        var httpClient = _a.httpClient, group = _a.group;
 	        return httpClient.post({
 	            uri: '/rest/$directory/currentUserBelongsTo',
@@ -3766,11 +3851,17 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
-	var __extends = (this && this.__extends) || function (d, b) {
-	    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-	    function __() { this.constructor = d; }
-	    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-	};
+	var __extends = (this && this.__extends) || (function () {
+	    var extendStatics = Object.setPrototypeOf ||
+	        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+	        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+	    return function (d, b) {
+	        extendStatics(d, b);
+	        function __() { this.constructor = d; }
+	        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+	    };
+	})();
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var http_client_1 = __webpack_require__(115);
 	var http_response_1 = __webpack_require__(116);
 	var AureliaHttpClient = __webpack_require__(117).HttpClient;
@@ -3778,8 +3869,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    __extends(BrowserHttpClient, _super);
 	    function BrowserHttpClient(_a) {
 	        var apiPrefix = _a.apiPrefix;
-	        _super.call(this, { apiPrefix: apiPrefix });
-	        this.client = new AureliaHttpClient();
+	        var _this = _super.call(this, { apiPrefix: apiPrefix }) || this;
+	        _this.client = new AureliaHttpClient();
+	        return _this;
 	    }
 	    BrowserHttpClient.prototype.get = function (_a) {
 	        var uri = _a.uri, params = _a.params;
@@ -3834,7 +3926,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	    return BrowserHttpClient;
 	}(http_client_1.HttpClient));
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = BrowserHttpClient;
 
 
@@ -3843,6 +3934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var HttpClient = (function () {
 	    function HttpClient(_a) {
 	        var apiPrefix = _a.apiPrefix;
@@ -3962,7 +4054,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return HttpClient;
 	}());
 	exports.HttpClient = HttpClient;
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = HttpClient;
 
 
@@ -3971,6 +4062,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var HttpResponse = (function () {
 	    function HttpResponse(_a) {
 	        var statusCode = _a.statusCode, headers = _a.headers, body = _a.body;
@@ -3980,7 +4072,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    return HttpResponse;
 	}());
-	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.default = HttpResponse;
 
 
