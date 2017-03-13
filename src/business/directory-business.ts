@@ -40,23 +40,23 @@ class DirectoryBusiness extends AbstractBusiness {
       });
   }
 
-  public currentUser(): Promise<ICurrentUserDBO> {
-    return this.service.currentUser()
+  public getCurrentUser(): Promise<ICurrentUserDBO> {
+    return this.service.getCurrentUser()
       .then(dbo => {
         return dbo;
       })
       .catch(() => {
-        return Promise.reject(new Error('Directory.currentUser: user is not logged in'));
+        return Promise.reject(new Error('Directory.getCurrentUser: user is not logged in'));
       });
   }
 
-  public currentUserBelongsTo(group: string): Promise<boolean> {
+  public getCurrentUserBelongsTo(group: string): Promise<boolean> {
 
     if (!(typeof group === 'string')) {
-      throw new Error('Directory.currentUserBelongsTo: group must be a string');
+      throw new Error('Directory.getCurrentUserBelongsTo: group must be a string');
     }
 
-    return this.service.currentUserBelongsTo(group)
+    return this.service.getCurrentUserBelongsTo(group)
       .then(() => {
         return true;
       })

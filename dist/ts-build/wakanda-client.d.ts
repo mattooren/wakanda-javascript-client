@@ -5,8 +5,8 @@ import NodeHttpClient from './data-access/http/node-http-client';
 export interface IDirectory {
     login(username: string, password: string, duration?: number): Promise<boolean>;
     logout(): Promise<boolean>;
-    currentUser(): Promise<any>;
-    currentUserBelongsTo(groupName: string): Promise<boolean>;
+    getCurrentUser(): Promise<any>;
+    getCurrentUserBelongsTo(groupName: string): Promise<boolean>;
 }
 export interface IHelper {
     isEntity(object: any): boolean;
