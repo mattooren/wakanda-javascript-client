@@ -20,8 +20,8 @@ export declare class DirectoryBaseService {
     static logout({httpClient}: {
         httpClient: HttpClient;
     }): Promise<boolean>;
-    static currentUser({httpClient}: {
+    static getCurrentUser({httpClient}: {
         httpClient: HttpClient;
     }): Promise<ICurrentUserDBO>;
-    static currentUserBelongsTo({httpClient, group}: ICurrentUserBelongsToParams): Promise<boolean>;
+    static getCurrentUserBelongsTo({httpClient, group}: ICurrentUserBelongsToParams): Promise<boolean>;
 }
