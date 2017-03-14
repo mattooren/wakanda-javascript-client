@@ -25,3 +25,6 @@ wakanda-solution/Contacts/Contacts/*.waSymData
 !wakanda-solution/Contacts/Contacts/WebFolder/.htaccess
 wakanda-solution/Contacts/Contacts/WebFolder/*
 wakanda-solution/Contacts/Contacts Solution/Directory.WakTDef
+wakanda-solution/Contacts/Contacts Solution/sessionID.json
+wakanda-solution/Contacts/Contacts/backend/logs/*
+wakanda-solution/Contacts/Contacts/database/data/*.waIndx

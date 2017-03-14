@@ -1,5 +1,9 @@
 # Wakanda Javascript Client
 
+## v0.6.0 - Beta
+- [Feature] Update typings dependencies
+- [Bugfix] Remove typings on the module publish
+
 ## v0.5.0 - Beta
 
 - [Feature] Support of the multimodel and handle a specific given catalog
