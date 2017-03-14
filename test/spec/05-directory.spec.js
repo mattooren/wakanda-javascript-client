@@ -70,13 +70,13 @@ describe('Directory API', function () {
     });
   });
 
-  describe('currentUser method', function () {
+  describe('getCurrentUser method', function () {
     it('should be defined', function () {
-      expect(dir.currentUser).to.be.a('function');
+      expect(dir.getCurrentUser).to.be.a('function');
     });
 
     it('should return a promise', function () {
-      var p = dir.currentUser();
+      var p = dir.getCurrentUser();
 
       expect(p).to.be.a('promise');
 
@@ -87,7 +87,7 @@ describe('Directory API', function () {
 
     it('should return current user info if logged in', function () {
       return dir.login('bar', 'bar', 3600 * 24 * 365).then(function () {
-        return dir.currentUser().then(function (user) {
+        return dir.getCurrentUser().then(function (user) {
           expect(user.userName).to.be.equal('bar');
           expect(user.fullName).to.be.equal('bar');
           expect(user.ID).to.be.a('string');
@@ -98,37 +98,37 @@ describe('Directory API', function () {
 
     it('should fail if user is not logged in', function () {
       return dir.logout().then(function () {
-        return dir.currentUser().catch(function (e) {
+        return dir.getCurrentUser().catch(function (e) {
           expect(e).to.be.defined;
         });
       });
     });
   });
 
-  describe('currentUserBelongsTo method', function () {
+  describe('getCurrentUserBelongsTo method', function () {
     it('should be defined', function () {
-      expect(dir.currentUserBelongsTo).to.be.a('function');
+      expect(dir.getCurrentUserBelongsTo).to.be.a('function');
     });
 
     it('should return a promise', function () {
-      expect(dir.currentUserBelongsTo('')).to.be.a('promise');
+      expect(dir.getCurrentUserBelongsTo('')).to.be.a('promise');
     });
 
     it('should fail if no parameter is given', function () {
       expect(function () {
-        dir.currentUserBelongsTo();
+        dir.getCurrentUserBelongsTo();
       }).to.throw(Error);
     });
 
     it('shoud fail if given parameter is not a string', function () {
       expect(function () {
-        dir.currentUserBelongsTo({userName: 'bar'});
+        dir.getCurrentUserBelongsTo({userName: 'bar'});
       }).to.throw(Error);
     });
 
     it('should resolve true if current user belongs to given group', function () {
       return dir.login('bar', 'bar', 3600 * 24 * 365).then(function (user) {
-        return dir.currentUserBelongsTo('Admin').then(function (result) {
+        return dir.getCurrentUserBelongsTo('Admin').then(function (result) {
           expect(result).to.be.true;
         });
       });
@@ -136,7 +136,7 @@ describe('Directory API', function () {
 
     it('should resolve false if current user doesn\'t belong to given group', function () {
       return dir.login('bar', 'bar', 3600 * 24 * 365).then(function (user) {
-        return dir.currentUserBelongsTo('QA').then(function (result) {
+        return dir.getCurrentUserBelongsTo('QA').then(function (result) {
           expect(result).to.be.false;
         });
       });
@@ -144,7 +144,7 @@ describe('Directory API', function () {
 
     it('should resolve false if user is not logged in', function () {
       return dir.logout().then(function (user) {
-        return dir.currentUserBelongsTo('QA').then(function (result) {
+        return dir.getCurrentUserBelongsTo('QA').then(function (result) {
           expect(result).to.be.false;
         });
       });
