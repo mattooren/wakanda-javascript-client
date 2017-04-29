@@ -12,7 +12,7 @@ declare class DirectoryBusiness extends AbstractBusiness {
     });
     login(username: string, password: string, duration?: number): Promise<boolean>;
     logout(): Promise<boolean>;
-    getCurrentUser(): Promise<ICurrentUserDBO>;
-    getCurrentUserBelongsTo(group: string): Promise<boolean>;
+    currentUser(): Promise<ICurrentUserDBO>;
+    currentUserBelongsTo(group: string): Promise<boolean>;
 }
 export default DirectoryBusiness;

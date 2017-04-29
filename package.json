@@ -1,32 +1,62 @@
 {
-  "name": "wakanda-client",
-  "main": "dist/wakanda-client.node.js",
-  "version": "2.0.0",
-  "description": "Wakanda Client allows you to easily interact with Wakanda Server on a JavaScript (browser or node) environment",
-  "typings": "dist/wakanda-client.d.ts",
-  "browser": "dist/wakanda-client.min.js",
-  "repository": "wakanda/wakanda-javascript-client",
-  "scripts": {
-    "webpack-watch": "node ./node_modules/webpack/bin/webpack.js --progress --colors --watch",
-    "webpack-build": "node ./node_modules/webpack/bin/webpack.js --progress --colors",
-    "webpack-build:ci": "node ./node_modules/webpack/bin/webpack.js --progress --colors --config webpack.ci.js",
-    "webpack-build:prod": "node ./node_modules/webpack/bin/webpack.js --progress --colors --config webpack.prod.js",
-    "test:karma:single": "node ./node_modules/karma/bin/karma start",
-    "test:karma:full": "npm run webpack-build && npm run test:karma:single",
-    "test:node:single": "http_proxy=\"\" node ./node_modules/mocha/bin/mocha test/bootstrap.js test/spec/**/*.spec.js",
-    "test:node:full": "npm run webpack-build && npm run test:node:single",
-    "test-single": "./test.sh single",
-    "test": "./test.sh",
-    "test-server:start": "node test/connect/server.js & echo $! > testserver.pid && sleep 1",
-    "test-server:stop": "kill `cat testserver.pid` && rm testserver.pid",
-    "test-server:record": "node test/connect/server.js record & echo $! > testserver.pid",
-    "test-server:init": "rm -rf test/connect/mocks && npm run test-server:record && npm run webpack-build && npm run test:node:single && npm run test:karma:single && npm run test-server:stop",
-    "codecov": "cat coverage/*/lcov.info | codecov",
-    "tsc": "node ./node_modules/typescript/bin/tsc",
-    "serve": "node ./node_modules/.bin/concurrently -r \"npm run webpack-watch\" \"node ./node_modules/.bin/gulp serve\""
+  "_args": [
+    [
+      {
+        "raw": "wakanda-client",
+        "scope": null,
+        "escapedName": "wakanda-client",
+        "name": "wakanda-client",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\mtoorenburg\\Documents\\Wakanda\\solutions\\wakandaapplicaties\\organisatiemonitor"
+    ]
+  ],
+  "_from": "wakanda-client@latest",
+  "_id": "wakanda-client@0.6.0",
+  "_inCache": true,
+  "_location": "/wakanda-client",
+  "_nodeVersion": "4.6.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/wakanda-client-0.6.0.tgz_1479400330454_0.7599374891724437"
   },
-  "author": "Wakanda SAS",
-  "license": "MIT",
+  "_npmUser": {
+    "name": "byassine",
+    "email": "yacine_r@yahoo.fr"
+  },
+  "_npmVersion": "3.10.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "wakanda-client",
+    "scope": null,
+    "escapedName": "wakanda-client",
+    "name": "wakanda-client",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/wakanda-client/-/wakanda-client-0.6.0.tgz",
+  "_shasum": "d089b7f04e44b29bcdb5a4017241b9a907d004d8",
+  "_shrinkwrap": null,
+  "_spec": "wakanda-client",
+  "_where": "C:\\Users\\mtoorenburg\\Documents\\Wakanda\\solutions\\wakandaapplicaties\\organisatiemonitor",
+  "author": {
+    "name": "Wakanda SAS"
+  },
+  "browser": "dist/wakanda-client.min.js",
+  "bugs": {
+    "url": "https://github.com/wakanda/wakanda-javascript-client/issues"
+  },
+  "dependencies": {
+    "core-js": "^2.4.1",
+    "request": "^2.76.0"
+  },
+  "description": "Wakanda Client allows you to easily interact with Wakanda Server on a JavaScript (browser or node) environment",
   "devDependencies": {
     "babel-core": "^6.3.17",
     "babel-loader": "^6.2.0",
@@ -38,7 +68,7 @@
     "codecov.io": "^0.1.6",
     "concurrently": "^2.0.0",
     "connect": "^3.4.0",
-    "connect-prism": "mrblackus/connect-prism",
+    "connect-prism": "github:mrblackus/connect-prism",
     "eslint": "^1.10.3",
     "eslint-loader": "^1.2.0",
     "express": "^4.13.3",
@@ -65,8 +95,59 @@
     "typescript": "^2.0.6",
     "webpack": "^1.12.15"
   },
-  "dependencies": {
-    "core-js": "^2.4.1",
-    "request": "^2.76.0"
-  }
+  "directories": {},
+  "dist": {
+    "shasum": "d089b7f04e44b29bcdb5a4017241b9a907d004d8",
+    "tarball": "https://registry.npmjs.org/wakanda-client/-/wakanda-client-0.6.0.tgz"
+  },
+  "gitHead": "28120ad927020cd026e25dbe491b26fca5d0da27",
+  "homepage": "https://github.com/wakanda/wakanda-javascript-client#readme",
+  "license": "MIT",
+  "main": "dist/wakanda-client.node.js",
+  "maintainers": [
+    {
+      "name": "byassine",
+      "email": "yacine_r@yahoo.fr"
+    },
+    {
+      "name": "jonathan.argentiero",
+      "email": "jonathan.argentiero@gmail.com"
+    },
+    {
+      "name": "mrblackus",
+      "email": "mathieu.savy@gmail.com"
+    },
+    {
+      "name": "wakanda",
+      "email": "jonathan.argentiero@wakanda.io"
+    }
+  ],
+  "name": "wakanda-client",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wakanda/wakanda-javascript-client.git"
+  },
+  "scripts": {
+    "codecov": "cat coverage/*/lcov.info | codecov",
+    "serve": "node ./node_modules/.bin/concurrently -r \"npm run webpack-watch\" \"node ./node_modules/.bin/gulp serve\"",
+    "test": "./test.sh",
+    "test-server:init": "rm -rf test/connect/mocks && npm run test-server:record && npm run webpack-build && npm run test:node:single && npm run test:karma:single && npm run test-server:stop",
+    "test-server:record": "node test/connect/server.js record & echo $! > testserver.pid",
+    "test-server:start": "node test/connect/server.js & echo $! > testserver.pid && sleep 1",
+    "test-server:stop": "kill `cat testserver.pid` && rm testserver.pid",
+    "test-single": "./test.sh single",
+    "test:karma:full": "npm run webpack-build && npm run test:karma:single",
+    "test:karma:single": "node ./node_modules/karma/bin/karma start",
+    "test:node:full": "npm run webpack-build && npm run test:node:single",
+    "test:node:single": "http_proxy=\"\" node ./node_modules/mocha/bin/mocha test/bootstrap.js test/spec/**/*.spec.js",
+    "tsc": "node ./node_modules/typescript/bin/tsc",
+    "webpack-build": "node ./node_modules/webpack/bin/webpack.js --progress --colors",
+    "webpack-build:ci": "node ./node_modules/webpack/bin/webpack.js --progress --colors --config webpack.ci.js",
+    "webpack-build:prod": "node ./node_modules/webpack/bin/webpack.js --progress --colors --config webpack.prod.js",
+    "webpack-watch": "node ./node_modules/webpack/bin/webpack.js --progress --colors --watch"
+  },
+  "typings": "dist/wakanda-client.d.ts",
+  "version": "0.6.0"
 }

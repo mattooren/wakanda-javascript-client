@@ -1,1 +1,0 @@
-﻿model.Employee.salaryProcessed.onGet = function() {	return (this.salary/0.030907)+" baht";};

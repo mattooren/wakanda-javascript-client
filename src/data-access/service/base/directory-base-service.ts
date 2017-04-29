@@ -40,7 +40,7 @@ export class DirectoryBaseService {
     });
   }
 
-  public static getCurrentUser({httpClient}: {httpClient: HttpClient}): Promise<ICurrentUserDBO> {
+  public static currentUser({httpClient}: {httpClient: HttpClient}): Promise<ICurrentUserDBO> {
     return httpClient.get({
       uri: '/rest/$directory/currentUser'
     })
@@ -56,7 +56,7 @@ export class DirectoryBaseService {
       });
   }
 
-  public static getCurrentUserBelongsTo({httpClient, group}: ICurrentUserBelongsToParams): Promise<boolean> {
+  public static currentUserBelongsTo({httpClient, group}: ICurrentUserBelongsToParams): Promise<boolean> {
     return httpClient.post({
       uri: '/rest/$directory/currentUserBelongsTo',
       data: [group]

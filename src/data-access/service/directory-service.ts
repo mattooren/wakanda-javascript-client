@@ -19,14 +19,14 @@ class DirectoryService extends AbstractService {
     });
   }
 
-  public getCurrentUser(): Promise<ICurrentUserDBO> {
-    return DirectoryBaseService.getCurrentUser({
+  public currentUser(): Promise<ICurrentUserDBO> {
+    return DirectoryBaseService.currentUser({
       httpClient: this.httpClient
     });
   }
 
-  public getCurrentUserBelongsTo(group: string): Promise<boolean> {
-    return DirectoryBaseService.getCurrentUserBelongsTo({
+  public currentUserBelongsTo(group: string): Promise<boolean> {
+    return DirectoryBaseService.currentUserBelongsTo({
       httpClient: this.httpClient,
       group
     });

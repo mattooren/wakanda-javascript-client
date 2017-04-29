@@ -7,5 +7,4 @@ export interface QueryOption {
   orderBy?: string;
   method?: string;
   emMethod?: string;
-  attributes? : string[];
 }

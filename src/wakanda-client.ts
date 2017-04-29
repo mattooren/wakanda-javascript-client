@@ -12,8 +12,8 @@ const packageOptions: any = require('../package.json');
 export interface IDirectory {
   login(username: string, password: string, duration?: number): Promise<boolean>;
   logout(): Promise<boolean>;
-  getCurrentUser(): Promise<any>;
-  getCurrentUserBelongsTo(groupName: string): Promise<boolean>;
+  currentUser(): Promise<any>;
+  currentUserBelongsTo(groupName: string): Promise<boolean>;
 }
 
 export interface IHelper {
@@ -51,11 +51,11 @@ class WakandaClient {
       logout: () => {
         return directoryBusiness.logout();
       },
-      getCurrentUser: () => {
-        return directoryBusiness.getCurrentUser();
+      currentUser: () => {
+        return directoryBusiness.currentUser();
       },
-      getCurrentUserBelongsTo: (group) => {
-        return directoryBusiness.getCurrentUserBelongsTo(group);
+      currentUserBelongsTo: (group) => {
+        return directoryBusiness.currentUserBelongsTo(group);
       }
     };
 
