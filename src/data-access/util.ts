@@ -3,6 +3,7 @@ import {QueryOption} from '../presentation/query-option';
 class Util {
   public static handleOptions(options: QueryOption) {
 
+	console.log("BINGO")
     if (!options) {
       return '';
     }
